@@ -1,9 +1,9 @@
-name: sec-lab
+name: ospf
 topology:
   nodes:
     sw1:
-      kind: srl
-      image: ghcr.io/nokia/srlinux:latest
+      kind: ceos
+      image: ceos:4.35.3F
       mgmt-ipv4: 172.20.20.17
     sw2:
       kind: ceos
@@ -11,5 +11,5 @@ topology:
       mgmt-ipv4: 172.20.20.18
 
   links:
-    - endpoints: ["sw1:e1-1", "sw2:eth1"]
-    - endpoints: ["sw1:e1-2", "sw2:eth2"]
+    - endpoints: ["sw1:eth1", "sw2:eth1"]
+    - endpoints: ["sw1:eth2", "sw2:eth2"]
