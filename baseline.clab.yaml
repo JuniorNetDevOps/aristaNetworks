@@ -4,11 +4,11 @@ topology:
     sw1:
       kind: srl
       image: ghcr.io/nokia/srlinux:latest
-      mgmt_ipv4: 172.20.20.17
+      mgmt-ipv4: 172.20.20.17
     sw2:
       kind: ceos
       image: ceos:4.35.3F
-      mgmt_ipv4: 172.20.20.18
+      mgmt-ipv4: 172.20.20.18
 
   links:
     - endpoints: ["sw1:e1-1", "sw2:eth1"]
