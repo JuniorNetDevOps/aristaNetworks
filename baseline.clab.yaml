@@ -1,0 +1,25 @@
+name: sec-lab
+topology:
+  nodes:
+    sw1:
+      kind: srl
+      image: ghcr.io/nokia/srlinux:latest
+      mgmt_ipv4: 172.20.20.2
+    sw2:
+      kind: ceos
+      image: ceos:4.35.3F
+      mgmt_ipv4: 172.20.20.3
+    fw1:
+      kind: vrnetlab
+      image: vrnetlab/paloalto:latest
+      mgmt_ipv4: 172.20.20.4
+    edge1:
+      kind: vrnetlab
+      image: vrnetlab/cisco-iosxr:latest
+      mgmt_ipv4: 172.20.20.5
+
+  links:
+    - endpoints: ["sw1:e1-1", "sw2:eth1"]
+    - endpoints: ["sw1:e1-2", "fw1:eth1"]
+    - endpoints: ["sw2:eth2", "fw1:eth2"]
+    - endpoints: ["fw1:eth3", "edge1:eth1"]
