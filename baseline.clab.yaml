@@ -5,6 +5,7 @@ topology:
       kind: ceos
       image: ceos:4.35.3F
       mgmt-ipv4: 172.20.20.17
+      startup-config: ./configs/cs1.cfg
     CS2:
       kind: ceos
       image: ceos:4.35.3F
