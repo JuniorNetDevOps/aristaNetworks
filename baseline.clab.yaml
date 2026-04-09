@@ -1,4 +1,4 @@
-name: ospf
+name: baseline
 topology:
   nodes:
     CS1:
