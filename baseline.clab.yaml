@@ -1,15 +1,24 @@
 name: ospf
 topology:
   nodes:
-    sw1:
+    CS1:
       kind: ceos
       image: ceos:4.35.3F
       mgmt-ipv4: 172.20.20.17
-    sw2:
+    CS2:
       kind: ceos
       image: ceos:4.35.3F
       mgmt-ipv4: 172.20.20.18
-
+    AS1:
+      kind: ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.19
+    AS2:
+      kind: ceos
+      image: ceos:4.35.3F
+      mgmt-ipv4: 172.20.20.20
   links:
-    - endpoints: ["sw1:eth1", "sw2:eth1"]
-    - endpoints: ["sw1:eth2", "sw2:eth2"]
+    - endpoints: ["CS1:eth1", "CS2:eth1"]
+    - endpoints: ["CS1:eth2", "CS2:eth2"]
+    - endpoints: ["CS1:eth5", "AS1:eth1"]
+    - endpoints: ["CS2:eth5", "AS2:eth1"]
