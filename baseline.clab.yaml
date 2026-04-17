@@ -5,19 +5,30 @@ topology:
       kind: ceos
       image: ceos:4.35.3F
       mgmt-ipv4: 172.20.20.17
-      startup-config: configs/spine1.cfg
+      startup-config: ./configs/spine1.cfg
+      env:
+        SYSTEMD_DISABLE_SERVICES: "rsyslog"
     spine2:
       kind: ceos
       image: ceos:4.35.3F
       mgmt-ipv4: 172.20.20.18
+      startup-config: ./configs/spine2.cfg
+      env:
+        SYSTEMD_DISABLE_SERVICES: "rsyslog"
     leaf1:
       kind: ceos
       image: ceos:4.35.3F
       mgmt-ipv4: 172.20.20.19
+      startup-config: ./configs/leaf1.cfg
+      env:
+        SYSTEMD_DISABLE_SERVICES: "rsyslog"
     leaf2:
       kind: ceos
       image: ceos:4.35.3F
       mgmt-ipv4: 172.20.20.20
+      startup-config: ./configs/leaf2.cfg
+      env:
+        SYSTEMD_DISABLE_SERVICES: "rsyslog"
   links:
     - endpoints: ["spine1:eth1", "spine2:eth1"]
     - endpoints: ["spine1:eth2", "spine2:eth2"]
