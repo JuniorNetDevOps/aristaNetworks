@@ -1,34 +1,40 @@
 name: baseline
+prefix: ""
+
 topology:
   nodes:
     spine1:
       kind: ceos
-      image: ceos:4.35.3F
+      image: ceos:4.34.5M
       mgmt-ipv4: 172.20.20.17
       startup-config: ./configs/spine1.cfg
       env:
-        SYSTEMD_DISABLE_SERVICES: "rsyslog"
+        CEOS_SYSLOG_DISABLE: "1"
+        CEOS_LABCONTAINER: "1"
     spine2:
       kind: ceos
-      image: ceos:4.35.3F
+      image: ceos:4.34.5M
       mgmt-ipv4: 172.20.20.18
       startup-config: ./configs/spine2.cfg
       env:
-        SYSTEMD_DISABLE_SERVICES: "rsyslog"
+        CEOS_SYSLOG_DISABLE: "1"
+        CEOS_LABCONTAINER: "1"
     leaf1:
       kind: ceos
-      image: ceos:4.35.3F
+      image: ceos:4.34.5M
       mgmt-ipv4: 172.20.20.19
       startup-config: ./configs/leaf1.cfg
       env:
-        SYSTEMD_DISABLE_SERVICES: "rsyslog"
+        CEOS_SYSLOG_DISABLE: "1"
+        CEOS_LABCONTAINER: "1"
     leaf2:
       kind: ceos
-      image: ceos:4.35.3F
+      image: ceos:4.34.5M
       mgmt-ipv4: 172.20.20.20
       startup-config: ./configs/leaf2.cfg
       env:
-        SYSTEMD_DISABLE_SERVICES: "rsyslog"
+        CEOS_SYSLOG_DISABLE: "1"
+        CEOS_LABCONTAINER: "1"
   links:
     - endpoints: ["spine1:eth1", "spine2:eth1"]
     - endpoints: ["spine1:eth2", "spine2:eth2"]
